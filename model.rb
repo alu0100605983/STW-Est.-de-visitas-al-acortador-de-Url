@@ -1,3 +1,9 @@
+require 'dm-core'
+require 'dm-migrations'
+require 'restclient'
+require 'xmlsimple'
+require 'dm-timestamps'
+
 class Shortenedurl
 	include DataMapper::Resource
 		property :id, Serial
