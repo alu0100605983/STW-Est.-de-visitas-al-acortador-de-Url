@@ -2,20 +2,20 @@ html,body {
         height:100%;           
 }
 h1 {
-        font-family: Arial,sans-serif
-        font-size:80px;
-        color:#01DF3A;         
+        font-family: Calibri,sans-serif
+        font-size:150px;
+        color:#DF01A5;         
 }     
 .lead {
-        color:#01DF3A;
+        color:#DF01A5;
 }     
 
 .container-full {
         margin: 0 auto;        
         width: 100%;
         min-height:20%;        
-        background-color:#6E6E6E;
-        color:#eee;; 
+        background-color:#000000;
+        color:#DF01A5;; 
         overflow:hidden;
 }   
 .container-full a {  

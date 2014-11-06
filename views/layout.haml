@@ -13,13 +13,14 @@
         .container-full
                 .row
                         .col-lg-12.text-center.v-center
-                                %h1 TinyClone                   
-                                %p.lead Práctica 5.
+                                %h1 Acortador de URL's                   
+                                %p.lead 
                                 %br/
                                 -if !session[:auth]
-                                        %a.btn.btn-success.btn-lg{:href=>'/auth/google_oauth2'} Iniciar sesión     
+                                        %a.btn.btn-success.btn-lg{:href=>'/auth/google_oauth2'} Inicie Sesión con Google     
                                 -else
-                                        %a.btn.btn-danger.btn-lg{:href=>'/auth/failure'} Cerrar sesión
+                                        %a.btn.btn-danger.btn-lg{:href=>'/auth/failure'} 
+                                        Salir de Google
                                 %br/
                                 %br/
                                 %br/
@@ -27,9 +28,9 @@
   
                                         .form-group{:style => "text-align:center;margin:0 auto;"}
                                                 %label(for="url")               
-                                                %input.form-control.input-lg{:autofocus => "", :name => "url", :placeholder => "Introduzca su URL", :size => "60", :type => "text", :value => ""}/       
-                                                %input.form-control.input-lg{:autofocus => "", :name => "to", :placeholder => "URL acortada", :size =>     "15", :type => "text", :value => ""}/        
-                                                %button.btn.btn-lg.btn-primary{:type => "submit", :value => "submit"} Enter!
+                                                %input.form-control.input-lg{:autofocus => "", :name => "url", :placeholder => "URL", :size => "60", :type => "text", :value => ""}/       
+                                                %input.form-control.input-lg{:autofocus => "", :name => "to", :placeholder => "nombre alternativo URL", :size =>     "20", :type => "text", :value => ""}/        
+                                                %button.btn.btn-lg.btn-primary{:type => "submit", :value => "submit"} Acortar
                 %br/
                 %br/
                 %br/
