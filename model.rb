@@ -10,6 +10,7 @@ class Shortenedurl
 		property :url, Text
 		property :to, Text
 		property :id_usu, Text
+		property :n_visits, Integer
 
 		has n, :visits
 end

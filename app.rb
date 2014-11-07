@@ -47,6 +47,7 @@ end
 
 Base = 36
 
+  #...
 
 get '/' do
   puts "inside get '/': #{[params]}"
@@ -81,12 +82,33 @@ get '/auth/failure' do
 end
 
 
+get '/estadisticas/:shortened' do
+  @link = Shortenedurl.first(:to => params[:shortened])
+  @visit = Visit.all(:order => [:id.asc], :shorturl_id => @link.id)
+  @country = Hash.new
+
+  @visit.each {|i|
+    if(@country[i.country].nil? == true)
+      @country[i.country] = 1
+    else
+      @country[i.country] += 1
+    end
+
+  }
+  haml :estadisticas
+end
+
+
+
 post '/' do
   puts "inside post '/': #{params}"
   uri = URI::parse(params[:url])
+  #pers = params[:personal]
   if uri.is_a? URI::HTTP or uri.is_a? URI::HTTPS then
+    #if current_user
     begin
-        #@short_url = ShortenedUrl.first_or_create(:url => params[:url])
+       #if pers == ""
+          #short = Url.count + 1
     	if params[:to] == " "
     		@short_url = ShortenedUrl.first_or_create(:url => params[:url], :id_usu => session[:email])
     	else
