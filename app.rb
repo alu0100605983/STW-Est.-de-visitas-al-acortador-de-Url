@@ -135,7 +135,7 @@ get '/:shortened' do
   if to_url then
     to_url.n_visits += 1
     to_url.raise_on_save_failure
-    visits = Visit.new(:created_at => Time.now, ip => get_remote_ip(env), :shorturl => to_url)
+    visits = Visit.new(ip => get_remote_ip(env), :shorturl => to_url)
     visits.save
     redirect to_url.url, 301
   else
