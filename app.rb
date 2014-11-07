@@ -132,7 +132,15 @@ get '/:shortened' do
 
   to_url = ShortenedUrl.first(:to => params[:shortened])
 
-
+  if to_url then
+    to_url.n_visits += 1
+    to_url.raise_on_save_failure
+    visits = Visit.new(:created_at => Time.now, ip => get_remote_ip(env), :shorturl => to_url)
+    visits.save
+    redirect to_url.url, 301
+  else
+    redirect to_url.url, 301
+  end
 
   def get_remote_ip(env)
   puts "request.url = #{request.url}"
@@ -143,13 +151,6 @@ get '/:shortened' do
   else
     puts "env['REMOTE_ADDR'] = #{env['REMOTE_ADDR']}"
     env['REMOTE_ADDR']
-  end
-
-  
-  if to_url
-	redirect to_url.url, 301
-  else
-	redirect short_url.url, 301
   end
 
 end
