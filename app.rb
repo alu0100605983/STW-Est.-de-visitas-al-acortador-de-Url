@@ -47,7 +47,7 @@ end
 
 Base = 36
 
-  #...
+
 
 get '/' do
   puts "inside get '/': #{[params]}"
@@ -141,18 +141,19 @@ get '/:shortened' do
   else
     redirect to_url.url, 301
   end
+end
+
 
   def get_remote_ip(env)
-  puts "request.url = #{request.url}"
-  puts "request.ip = #{request.ip}"
-  if addr = env['HTTP_X_FORWARDED_FOR']
-    puts "env['HTTP_X_FORWARDED_FOR'] = #{addr}"
-    addr.split(',').first.strip
-  else
-    puts "env['REMOTE_ADDR'] = #{env['REMOTE_ADDR']}"
-    env['REMOTE_ADDR']
+    puts "request.url = #{request.url}"
+    puts "request.ip = #{request.ip}"
+    if addr = env['HTTP_X_FORWARDED_FOR']
+      puts "env['HTTP_X_FORWARDED_FOR'] = #{addr}"
+      addr.split(',').first.strip
+    else
+      puts "env['REMOTE_ADDR'] = #{env['REMOTE_ADDR']}"
+      env['REMOTE_ADDR']
+    end
   end
-
-end
 
 error do erb :not_found end
